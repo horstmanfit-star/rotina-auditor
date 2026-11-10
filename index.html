@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rotina Auditor Fiscal</title>
+<meta name="description" content="Checklist diário de estudos para concurso de Auditor Fiscal. Funciona offline.">
+<meta name="theme-color" content="#1f3a5f">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rotina AF">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>
+  // aplica o tema antes de pintar a tela (evita "piscada")
+  try {
+    var d = JSON.parse(localStorage.getItem('rotina_auditor_v1') || '{}');
+    var t = d.settings && d.settings.theme;
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="top">
+  <div class="brand"><span class="logo" aria-hidden="true">✔</span><div><b>Rotina Auditor Fiscal</b><small id="netState">…</small></div></div>
+  <button class="icon-btn" data-a="toggleTheme" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌓</button>
+</header>
+
+<main id="view" tabindex="-1" aria-live="polite"></main>
+
+<nav id="nav" aria-label="Navegação principal">
+  <button data-tab="today"><span class="ic" aria-hidden="true">📋</span><span>Hoje</span></button>
+  <button data-tab="sat"><span class="ic" aria-hidden="true">⏱️</span><span>Sábado</span></button>
+  <button data-tab="hist"><span class="ic" aria-hidden="true">📅</span><span>Histórico</span></button>
+  <button data-tab="perf"><span class="ic" aria-hidden="true">📈</span><span>Desempenho</span></button>
+  <button data-tab="cfg"><span class="ic" aria-hidden="true">⚙️</span><span>Ajustes</span></button>
+</nav>
+
+<div id="datalists"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:16px">Este aplicativo precisa de JavaScript ativado.</p></noscript>
+<script src="script.js"></script>
+</body>
+</html>
